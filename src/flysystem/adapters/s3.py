@@ -100,7 +100,7 @@ class S3FilesystemAdapter(FilesystemAdapter):
             None
         """
         try:
-            self._client.upload_fileobj(resource, self._bucket_name, path)
+            self._client.upload_fileobj(resource, self._bucket_name, path, ExtraArgs=options)
         except ClientError as ex:
             raise UnableToWriteFile.with_location(path, str(ex))
         except TypeError as ex:
